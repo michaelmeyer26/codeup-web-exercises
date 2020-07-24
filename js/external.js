@@ -4,7 +4,6 @@
 // alert("Great, " + favColor + " is my favorite color, too!");
 
 //Renting Movies
-
 var movie1 = Number(prompt("How many days did you rent the first movie for?"));
 var movie2 = Number(prompt("How many days did you rent the second movie for?"));
 var movie3 = Number(prompt("How many days did you rent the third movie for?"));
@@ -15,7 +14,6 @@ alert("Total cost is $" + totalCost.toFixed(2));
 
 
 //Contracting
-
 var googlePay = Number(prompt("What is your hourly rate at Google?"));
 var googleHrs = Number(prompt("And how many hours did you work for them this week?"));
 var amznPay = Number(prompt("What is your hourly rate at Amazon?"));
