@@ -105,5 +105,5 @@ alert("Your tip amount for this bill is " + calculateTip(tipPercent, billTotal))
  */
 
 function applyDiscount(originalPrice, discountPercent) {
-    return originalPricerice * (1 - discountPercent);
+    return originalPrice * (1 - discountPercent);
 }
