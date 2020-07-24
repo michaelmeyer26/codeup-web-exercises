@@ -74,12 +74,20 @@ console.log(isTwo(random));
  * > calculateTip(0.15, 33.42) // returns 5.013
  */
 
+function calculateTip(x, y) {
+    return x * y;
+}
+
 /**
  * TODO:
  * Use prompt and alert in combination with your calculateTip function to
  * prompt the user for the bill total and a percentage they would like to tip,
  * then display the dollar amount they should tip
  */
+
+var billTotal = parseFloat(prompt("What was the total amount of your bill?"));
+var tipPercent = parseFloat(prompt("And how much would you like to tip? (Use decimal notation i.e. 0.20)"));
+alert("Your tip amount for this bill is " + calculateTip(tipPercent, billTotal));
 
 /**
  * TODO:
@@ -95,3 +103,8 @@ console.log(isTwo(random));
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+function applyDiscount(originalPrice, discountPercent) {
+    var amountDiscounted = originalPrice * discountPercent;
+    return originalPrice - amountDiscounted;
+}
