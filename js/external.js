@@ -1,7 +1,7 @@
-// console.log("Hello from external JavaScript");
-// alert("Welcome to my Website!");
-// var favColor = prompt("What's your favorite color?");
-// alert("Great, " + favColor + " is my favorite color, too!");
+console.log("Hello from external JavaScript");
+alert("Welcome to my Website!");
+var favColor = prompt("What's your favorite color?");
+alert("Great, " + favColor + " is my favorite color, too!");
 
 //Renting Movies
 var movie1 = Number(prompt("How many days did you rent the first movie for?"));
