@@ -35,6 +35,8 @@ function analyzeColor (color) {
         return "figs can be indigo";
     } else if (color === "violet") {
         return "blackberries are violet";
+    } else {
+        return "I don't know anything about that color";
     }
 }
 
@@ -60,12 +62,47 @@ console.log(colorMessage);
  * Refactor your above function to use a switch-case statement
  */
 
+function analyzeColorSwitch (color) {
+    switch (color) {
+        case "red":
+            return "strawberries are red";
+            break;
+        case "orange":
+            return "carrots are orange";
+            break;
+        case "yellow":
+            return "lemons are yellow";
+            break;
+        case "green":
+            return "bell peppers can be green";
+            break;
+        case "blue":
+            return "blueberries are blue";
+            break;
+        case "indigo":
+            return "figs can be indigo";
+            break;
+        case "violet":
+            return "blackberries are violet";
+            break;
+        default:
+            return "I don't know anything about that color";
+    }
+}
+
+colorMessage = analyzeColorSwitch(whichColor);
+console.log(colorMessage);
+
 /**
  * TODO:
  * Prompt the user for a color when the page loads, and pass the input from the
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+var userColor = prompt("What's your favorite color?");
+colorMessage = analyzeColor(userColor.toLowerCase());
+alert(colorMessage);
 
 /* ########################################################################## */
 
@@ -89,6 +126,24 @@ console.log(colorMessage);
  * return value.
  */
 
+function calculateTotal(luckyNumber, subtotal) {
+    var discount = 0;
+    var total = subtotal;
+    if (luckyNumber === 5) {
+        discount = 1.0;
+    } else if (luckyNumber === 1) {
+        discount = 0.1;
+    } else if (luckyNumber === 2) {
+        discount = 0.25
+    } else if (luckyNumber === 3) {
+        discount = 0.35
+    } else if (luckyNumber === 4) {
+        discount = 0.5
+    }
+    total = (1 - discount) * subtotal;
+    return total;
+}
+
 /**
  * TODO:
  * Uncomment the line below to generate a random number between 0 and 6.
@@ -96,8 +151,21 @@ console.log(colorMessage);
  * and alerts to display to the user what their lucky number was, what their
  * price before the discount was, and what their price after the discount is.
  */
-// Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+//Generate a random number between 0 and 6
+var luckyNumber = Math.floor(Math.random() * 6);
+var totalBill = prompt("How much are you spending today?");
+var newTotal = calculateTotal(luckyNumber, totalBill);
+alert("Your subtotal was $" + totalBill.toFixed(2));
+alert("Your lucky number was..." + luckyNumber"!");
+if (luckyNumber == 0) {
+    alert("Unfortunately you didn't get a discount, your total stays the same: " newTotal);
+} else if (luckyNumber == 5) {
+    alert("You got a 100% discount! You don't need to pay anything!");
+} else if (luckyNumber == 6) {
+    alert("Wait, how did you get that lucky number? I don't know what discount to apply in this case!")
+} else {
+    alert("Your new total after the discount is $" + newTotal);
+}
 
 /**
  * TODO:
