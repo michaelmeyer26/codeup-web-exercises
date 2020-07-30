@@ -7,8 +7,10 @@ function skipIt () {
     }
     console.log("Number to skip is: " + input);
     for (var x = 1; x <= 50; x++) {
-        if (input == x || x % 2 === 0) {
+        if (x % 2 === 0) {
             continue;
+        } else if (x == input) {
+            console.log("Yikes! Skipping number : " + input);
         }
         console.log("Here is an odd number: " + x);
     }
