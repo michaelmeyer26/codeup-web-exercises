@@ -153,12 +153,14 @@ function calculateTotal(luckyNumber, subtotal) {
  */
 //Generate a random number between 0 and 6
 var luckyNumber = Math.floor(Math.random() * 6);
+
 var totalBill = prompt("How much are you spending today?");
+totalBill = parseFloat(totalBill);
 var newTotal = calculateTotal(luckyNumber, totalBill);
-alert("Your subtotal was $" + totalBill.toFixed(2));
-alert("Your lucky number was..." + luckyNumber"!");
+alert("Your subtotal was $" + totalBill);
+alert("Your lucky number was..." + luckyNumber + "!");
 if (luckyNumber == 0) {
-    alert("Unfortunately you didn't get a discount, your total stays the same: " newTotal);
+    alert("Unfortunately you didn't get a discount, your total stays the same: " + newTotal);
 } else if (luckyNumber == 5) {
     alert("You got a 100% discount! You don't need to pay anything!");
 } else if (luckyNumber == 6) {
@@ -183,3 +185,86 @@ if (luckyNumber == 0) {
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
+//without functions (bad, I hate it)
+// var confirmNumber = confirm("Would you like to enter a number?");
+// if (confirmNumber) {
+//     var userNumber = prompt("Please enter a number.");
+//     userNumber = parseFloat(userNumber);
+//     if(! isNaN(userNumber)) {
+//         if (userNumber % 2 == 0) {
+//             alert("Your number is even")
+//         } else {
+//             alert("Your number is odd")
+//         }
+//
+//         alert("Your number plus 100 is " + (100 + userNumber));
+//
+//         if (userNumber >= 0) {
+//             alert("Your number is positive")
+//         } else {
+//             alert("Your number is negative")
+//         }
+//     } else {
+//         alert("You didn't enter a number")
+//     }
+// }
+
+//with functions. Still very confusing??? Too granular? Bad Function names? idk.
+// Don't know how to better prompt for value
+function wantToEnterNumber() {
+    var wantEnter = confirm("Would you like to enter a number?");
+    return wantEnter;
+}
+
+function giveMeANumber() {
+    var userNumber = prompt("What is your number?");
+    return userNumber;
+}
+
+function isEven(userNumber) {
+    if (userNumber % 2 == 0) {
+        alert("Your number is even");
+    } else {
+        alert("Your number is odd");
+    }
+}
+
+function plus100(userNumber) {
+    var numberPlus100 = userNumber + 100;
+    alert("Your number plus 100 is: " + numberPlus100);
+}
+
+function isPositive(userNumber) {
+    if (userNumber >= 0) {
+        alert("Your number is positive");
+    } else {
+        alert("Your number is negative");
+    }
+}
+
+function checkInput(userNumber) {
+    if (isNaN(userNumber)) {
+        alert("You did not enter a number");
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function numberFacts(userNumber) {
+    isEven(userNumber);
+    plus100(userNumber);
+    isPositive(userNumber);
+}
+
+function numberExercise() {
+    var userConfirm = wantToEnterNumber();
+    if (userConfirm) {
+        var userNumber = giveMeANumber();
+        if (checkInput(userNumber)) {
+            userNumber = parseFloat(userNumber);
+            numberFacts(userNumber);
+        }
+    }
+}
