@@ -11,6 +11,7 @@ function skipIt () {
             continue;
         } else if (x == input) {
             console.log("Yikes! Skipping number : " + input);
+            continue;
         }
         console.log("Here is an odd number: " + x);
     }
