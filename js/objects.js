@@ -170,7 +170,7 @@
     }
 
 
-    //need to pass in a function? Maybe?
+    //need to pass in a function? Maybe? Array?
     function showBookInfo(book, i) {
         console.log("Book #" + (i + 1));
         console.log ("Title: " + book.title);
