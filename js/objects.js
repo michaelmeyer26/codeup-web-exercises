@@ -12,6 +12,17 @@
      *  > console.log(person.lastName) // "Sanchez"
      */
 
+    var person = {
+        firstName: "Michael",
+        lastName: "Meyer",
+        sayHello: function () {
+            return "Hello from " + this.firstName + " " + this.lastName + "!";
+        }
+    };
+
+    console.log(person.firstName + " " + person.lastName);
+    console.log(person.sayHello());
+
     /**
      * TODO:
      * Add a sayHello method to the person object that returns a greeting using
@@ -36,11 +47,27 @@
      * and console.log the relevant messages for each person
      */
 
-    // var shoppers = [
-    //     {name: 'Cameron', amount: 180},
-    //     {name: 'Ryan', amount: 250},
-    //     {name: 'George', amount: 320}
-    // ];
+    var shoppers = [
+        {name: 'Cameron', amount: 180},
+        {name: 'Ryan', amount: 250},
+        {name: 'George', amount: 320}
+    ];
+
+    shoppers.forEach(function(shopper) {
+        var discount = shopper.amount >= 200;
+        var discountAmount;
+        var discountMessage;
+        var total;
+        if (discount) {
+            discountAmount = shopper.amount * .12;
+            discountMessage = "did get the discount, and it was worth $" + discountAmount.toFixed(2);
+            total = shopper.amount - discountAmount;
+        } else {
+            discountMessage = "didn't get the discount";
+            total = shopper.amount;
+        }
+        console.log("Hello, " + shopper.name + ". You " + discountMessage + ". Your total for today is $" + total.toFixed(2) + ".");
+    });
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
@@ -54,6 +81,29 @@
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+
+    var books = [
+        {
+            title: "The Grapes of Wrath",
+            author: {firstName: "John", lastName: "Steinbeck"}
+        },
+        {
+            title: "A Raisin in the Sun",
+            author: {firstName: "Lorraine", lastName: "Hansberry"}
+        },
+        {
+            title: "The Complete Poems of Emily Dickinson",
+            author: {firstName: "Emily", lastName: "Dickinson"}
+        },
+        {
+            title: "Devil in the White City",
+            author: {firstName: "Erik", lastName: "Larson"}
+        },
+        {
+            title: "Monster Manual (1977)",
+            author: {firstName: "Gary", lastName: "Gygax"}
+        }
+    ]
 
     /**
      * TODO:
@@ -80,6 +130,13 @@
      *      ...
      */
 
+    books.forEach(function (book, i) {
+        console.log("Book #" + (i + 1));
+        console.log ("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+        console.log("---");
+    });
+
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
@@ -90,5 +147,43 @@
      *   outputs the information described above. Refactor your loop to use your
      *   `showBookInfo` function.
      */
+
+    function createBook() {
+        var book = {
+            title: "",
+            author: {firstName: "", lastName: ""}
+        }
+        book.title = prompt("What is the title of this book?");
+        book.author.firstName = prompt("What is the author's first name?");
+        book.author.lastName = prompt("What is the author's last name?");
+        return book;
+    }
+
+    function createBookArray() {
+        var bookArray = [];
+        var anotherBook = true;
+        while (anotherBook) {
+            bookArray.push(createBook());
+            anotherBook = confirm("Whould you like to add another book?");
+        }
+        return bookArray;
+    }
+
+
+    //need to pass in a function? Maybe?
+    function showBookInfo(book, i) {
+        console.log("Book #" + (i + 1));
+        console.log ("Title: " + book.title);
+        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+        console.log("---");
+    }
+
+    function library() {
+        var bookshelf = createBookArray();
+        showBookInfo(bookshelf);
+    }
+
+    library();
+
 
 })();
