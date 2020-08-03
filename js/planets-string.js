@@ -34,8 +34,16 @@
     planetsArray.forEach(function(element) {
         planetsListArray.push("<li>" + element + "</li>");
     });
+
     var planetsList = planetsListArray.join("");
     planetsList = "<ul>" + planetsList + "</ul>";
     console.log(planetsList);
+
+    //Alternate solution
+    // var planetsList = planetsArray.join("</li><li>");
+    // planetsList = "<ul><li>" + planetsList + "</li></ul>";
+    // console.log(planetsList);
+
+    document.write(planetsList);
 
 })();
