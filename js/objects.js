@@ -156,6 +156,7 @@
         book.title = prompt("What is the title of this book?");
         book.author.firstName = prompt("What is the author's first name?");
         book.author.lastName = prompt("What is the author's last name?");
+        console.log(book);
         return book;
     }
 
@@ -166,16 +167,18 @@
             bookArray.push(createBook());
             anotherBook = confirm("Whould you like to add another book?");
         }
+        console.log(bookArray);
         return bookArray;
     }
 
-
     //need to pass in a function? Maybe? Array?
-    function showBookInfo(book, i) {
-        console.log("Book #" + (i + 1));
-        console.log ("Title: " + book.title);
-        console.log("Author: " + book.author.firstName + " " + book.author.lastName);
-        console.log("---");
+    function showBookInfo(bookshelf) {
+        bookshelf.forEach(function(book, i) {
+            console.log("Book #" + (i + 1));
+            console.log ("Title: " + book.title);
+            console.log("Author: " + book.author.firstName + " " + book.author.lastName);
+            console.log("---");
+        })
     }
 
     function library() {
