@@ -1,0 +1,59 @@
+h1 {
+    text-align: center;
+}
+
+h1, h2 {
+    text-decoration: underline;
+    color: #00F7CE;
+}
+
+body {
+    background-color: #006D5B;
+    background-image: url("../img/pexels-photo-1029596.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+}
+
+ul {
+    list-style-type: square;
+    color: #DDFFE7;
+}
+
+li {
+    color: #DDFFE7;
+}
+
+p {
+    color: #DDFFE7;
+}
+
+table, th, td {
+    border: 1px solid #DDFFE7;
+    color: #DDFFE7;
+}
+
+table {
+    width: 35%;
+}
+
+th {
+    height: 35px;
+}
+
+a:link {
+    color: #81B622;
+}
+
+a:active {
+    color: white;
+}
+
+a:hover {
+    color: #ECF87F;
+}
+
+a:visited {
+    color: lavender;
+}
