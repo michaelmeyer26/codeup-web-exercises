@@ -73,6 +73,15 @@ a {
     line-height: 80px;
 }
 
+.profile-items {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-entry {
+    margin: .5em;
+}
+
 .container {
     margin-bottom: 2em;
 }
@@ -119,7 +128,7 @@ a {
 
 .media-image {
     max-width: 50px;
-    margin: 1.33em;
+    margin-top: 1.33em;
     float: left;
 }
 
