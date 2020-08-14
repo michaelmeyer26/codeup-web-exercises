@@ -52,7 +52,8 @@ a {
     height: 80px;
 }
 .profile-image {
-
+    position: relative;
+    bottom: 1.5em;
 }
 .profile-form {
     align-self: center;
@@ -95,7 +96,6 @@ a {
 .who-to-follow {
     margin: .5em;
     flex-grow: 1;
-    display: flex;
 }
 .media {
     width: 100%;
