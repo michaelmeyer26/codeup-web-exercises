@@ -1,0 +1,19 @@
+.navbar {
+    border-top: 3px solid gray;
+}
+
+.navbar .active {
+    background-color: gray;
+}
+
+.jumbotron {
+    background-image: url("../img/pizza.png");
+}
+
+.jumbotron h1 {
+    background-color: white;
+    text-align: center;
+    opacity: 60%;
+    width: 100%;
+    font-weight: normal;
+}
