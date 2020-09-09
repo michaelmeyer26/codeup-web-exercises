@@ -1,6 +1,8 @@
 "use strict";
 
 $(document).ready(function() {
-    alert( 'The DOM has finished loading!' )
-
+    $('li').css('font-size', '20px');
+    $('h1').css('color', 'red');
+    $('p').css('font-weight', 'bold');
+    $('li, h1, p').css("background-color", "beige")
 });
