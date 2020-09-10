@@ -22,7 +22,7 @@
             for (var i = 0; i < enteredKeys.length; i++) {
                 if (enteredKeys[i] !== konamiCode[i]) {
                     enteredKeys = [];
-                    return false;
+                    return;
                 }
             }
             if (enteredKeys.length === 11) {
@@ -33,14 +33,8 @@
     }
 
     $(document).keyup(function(event){
-        console.log(event.keyCode);
-        console.log(enteredKeys);
-        if (event.keyCode === 38 && enteredKeys.length === 0) {
-            enteredKeys.push(38);
-        } else if (enteredKeys.length >=1) {
-            enteredKeys.push(event.keyCode);
-            keyChecker();
-        }
+        enteredKeys.push(event.keyCode);
+        keyChecker();
     });
 
 
