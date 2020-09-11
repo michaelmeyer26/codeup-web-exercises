@@ -12,6 +12,44 @@
             background-color: #e7ff00;
             font-size: 1.1em;
         }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        #picture-set {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .picture {
+            width: 25%;
+        }
+
+        .yellowstone {
+            background-image: url("img/yellowstone.jpg");
+        }
+
+        .big-bend {
+            background-image: url("img/bigbend.jpg");
+        }
+
+        .everglades {
+            background-image: url("img/Everglades.jpg");
+        }
+
+        .picture-frame {
+            border: 15px solid saddlebrown;
+            padding: 10px;
+            margin: 5px auto;
+            height: 300px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .swap-button {
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
@@ -60,6 +98,44 @@
     <br>
 </dl>
 
+<button id="highlight-last-button">Click here to highlight last item</button>
+<h3>Yellowstone National Park</h3>
+<ul>
+    <li>Yellowstone encompasses 3,472 square miles (2,221,766 acres) which makes it larger than Rhode Island and Delaware combined.</li>
+    <li>Yellowstone is home to more than 500 active geysers (more than half the world’s geysers).</li>
+    <li>Yellowstone is home to the largest concentration of mammals in the lower 48 states (67 species).</li>
+    <li>There are approximately 1,000 miles of hiking trails in Yellowstone.</li>
+</ul>
+<h3>Big Bend National Park</h3>
+<ul>
+    <li>The Rio Grande river serves not only as the edge of the park, but also the border between the USA and Mexico.</li>
+    <li>The name Big Bend comes from a large bend in the Rio Grande River along the park boundary.</li>
+    <li>Big Bend National Park has the darkest measured skies in the lower 48 states, and star gazing here is obviously superb.</li>
+    <li>There park contains 56 species of reptiles, 75 species of mammals, more than 450 species of birds, along with at least 1,200 species of plants.</li>
+</ul>
+<h3>Everglades National Park</h3>
+<ul>
+    <li>There are at least nine different ecosystems that work together to sustain life in the Everglades. These include coastal mangroves, pine flatwoods, hardwood hammocks, and freshwater marl prairies.</li>
+    <li>The Everglades is home to the Florida Panther, one of the most endangered species on earth. There are currently less than 100 remaining.</li>
+    <li>Thick sawgrass covers much of the Everglades terrain; and while it may look soft, the razors can cut through your clothing.</li>
+    <li>The Everglades is often referred to as a “swamp”, but in reality it is a giant, slow moving river.</li>
+</ul>
+
+<div id="picture-set">
+    <div class="picture">
+        <div class="picture-frame yellowstone"></div>
+        <button class="swap-button" id="left-button">swap</button>
+    </div>
+    <div class="picture">
+        <div class="picture-frame big-bend"></div>
+        <button class="swap-button" id="center-button">swap</button>
+    </div>
+    <div class="picture">
+        <div class="picture-frame everglades"></div>
+        <button class="swap-button" id="right-button">swap</button>
+    </div>
+</div>
+
 <script src="js/jquery-3.5.1.min.js"></script>
 <script>
     $(document).ready(function() {
@@ -69,6 +145,29 @@
         $("dt").click(function () {
             $(this).toggleClass('highlight');
         });
+
+
+        $("#highlight-last-button").click(function () {
+            $('ul').each(function () {
+                $(this).children().last().toggleClass("highlight");
+            });
+        });
+
+        $('h3').click(function () {
+            $('h3').next().children().toggleClass('bold');
+        });
+
+        $('li').click(function() {
+            $(this).parent().children().first().css("color", "blue");
+        });
+
+        $('#left-button').click(function() {
+            var leftHTML = $('#left-button').parent().first().html();
+            var centerHTML = "";
+
+            console.log(leftHTML);
+        });
+
     });
 </script>
 </body>
