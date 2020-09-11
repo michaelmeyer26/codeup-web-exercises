@@ -57,6 +57,9 @@
     <h1>Would you like to sign up for our newsletter?</h1>
     <span id="confirm">X</span>
 </div>
+
+<h2 style="display: none" id="register">Please register for our site!</h2>
+
 <h2>National Parks Facts</h2>
 <button id="toggler">Show/Hide Answers</button>
 
@@ -168,6 +171,13 @@
         $('li').click(function() {
             $(this).parent().children().first().css("color", "blue");
         });
+
+        var delay = 8000; // delay time in milliseconds
+
+        setTimeout(function () {
+            $('#register').fadeIn(1500)
+        }, delay);
+
 
         // $('#left-button').click(function() {
         //     var leftHTML = $('#left-button').parent().first().html();
