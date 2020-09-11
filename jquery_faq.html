@@ -2,9 +2,74 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>jQuery FAQ</title>
+    <style>
+        .invisible {
+            visibility: hidden;
+        }
+
+        .highlight {
+            background-color: #e7ff00;
+            font-size: 1.1em;
+        }
+    </style>
 </head>
 <body>
+<h2>National Parks Facts</h2>
+<button id="toggler">Show/Hide Answers</button>
 
+<dl>
+    <dt>How old is the National Park System?</dt>
+    <dd class="invisible">The National Park Service was created by an act signed by President Woodrow Wilson on August 25, 1916. Yellowstone National Park was established by an act signed by President Ulysses S. Grant on March 1, 1872, as the nation's first national park. View the National Park System timeline.</dd>
+    <br>
+
+    <dt>How many areas are in the National Park System?</dt>
+    <dd class="invisible">The system includes 419 areas covering more than 85 million acres in every state, the District of Columbia, American Samoa, Guam, Puerto Rico, and the Virgin Islands. These areas include national parks, monuments, battlefields, military parks, historical parks, historic sites, lakeshores, seashores, recreation areas, scenic rivers and trails, and the White House. Learn more about national park designations. See the complete list of National Park Service units and related areas by type and number.</dd>
+    <br>
+
+    <dt>What is the largest National Park?</dt>
+    <dd class="invisible">Wrangell-St. Elias National Park and Preserve, AK, at 13.2 million acres</dd>
+    <br>
+
+    <dt>Okay, what is the smallest?</dt>
+    <dd class="invisible">Thaddeus Kosciuszko National Memorial, PA, at 0.02 acres</dd>
+    <br>
+
+    <dt>How many people visit the national parks?</dt>
+    <dd class="invisible">Total recreation visitors to the national parks in 2019: 327,516,619.</dd>
+    <br>
+
+    <dt>What was the most visited National Park last year?</dt>
+    <dd class="invisible">As of 2020 it was the Great Smoky Mountains National Park, with about 12.5 million recreational visits.</dd>
+    <br>
+
+    <dt>Can I bring my pet to a National Park</dt>
+    <dd class="invisible">Some national parks welcome pets—in developed areas, on many trails and campgrounds, and in some lodging facilities.</dd>
+    <br>
+
+    <dt>What do I need to know about driving off road in national parks?</dt>
+    <dd class="invisible">Before you head out, check with the national parks that you intend to visit. In many national parks, off-road driving is illegal. Where off-road driving is allowed, the National Park Service regulates it.</dd>
+    <br>
+
+    <dt>What are concessions?</dt>
+    <dd class="invisible">Concessioners provide park visitors with lodging, transportation, food services, shops, guiding, and other services. More than 480 NPS concession contracts in more than 100 different park units vary in size from small, family-owned businesses to national/international corporations. Learn more about commercial services in the National Park Service.</dd>
+    <br>
+
+    <dt>How do I apply for a job with the National Park Service?</dt>
+    <dd class="invisible">National Park Service jobs, including both permanent and seasonal positions, are listed on USAJOBs. Learn more about working for us, including opportunities for students and volunteers and tips for applying for jobs.</dd>
+    <br>
+</dl>
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $("#toggler").click(function () {
+            $("dd").toggleClass('invisible');
+        });
+        $("dt").click(function () {
+            $(this).toggleClass('highlight');
+        });
+    });
+</script>
 </body>
 </html>
