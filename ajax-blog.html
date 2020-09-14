@@ -6,9 +6,25 @@
 </head>
 <body>
 
+    <div id="posts"></div>
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+<script>
+    (function() {
+        $.ajax("data/blog.json").done(function(data, status) {
+            console.log(data)
+            for (var i = 0; i < data.length; i++) {
+                var categories = data[i].categories.join(", ")
+                $('#posts').append("<h1>"+ data[i].title +"</h1>\n" +
+                    "<p>"+ data[i].content +"</p>\n" +
+                    "<div class='date'>"+ data[i].date +"</div>\n" +
+                    "<div class='categories'> Categories: "+ categories +"</div>\n")
+            };
+        });
+    })();
+</script>
 
 </body>
 </html>
