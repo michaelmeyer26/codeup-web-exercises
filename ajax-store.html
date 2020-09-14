@@ -19,15 +19,15 @@
     <tbody id="insertProducts"></tbody>
 </table>
 
+<button id="refresh-button">Refresh Inventory</button>
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
 <script>
 (function() {
     "use strict";
     // TODO: Create an AJAX GET request for the file under data/inventory.json
-    var dataHTML = "";
     $.ajax("data/inventory.json").done(function(data, status) {
-        console.log(data);
         for (var i = 0; i < data.length; i++) {
             var categories = data[i].categories.join(", ")
             $('#insertProducts').append("<tr>\n" +
@@ -36,8 +36,22 @@
                 "            <th>$"+ data[i].price +"</th>\n" +
                 "            <th>"+ categories +"</th>\n" +
                 "        </tr>")
-        }
-    })
+        };
+    });
+    $('#refresh-button').click(function() {
+        $("#insertProducts").empty();
+        $.ajax("data/inventory.json").done(function(data, status) {
+            for (var i = 0; i < data.length; i++) {
+                var categories = data[i].categories.join(", ")
+                $('#insertProducts').append("<tr>\n" +
+                    "            <th>"+ data[i].title +"</th>\n" +
+                    "            <th>"+ data[i].quantity +"</th>\n" +
+                    "            <th>$"+ data[i].price +"</th>\n" +
+                    "            <th>"+ categories +"</th>\n" +
+                    "        </tr>")
+            };
+        });
+    });
     // TODO: Take the data from inventory.json and append it to the products table
     //       HINT: Your data should come back as a JSON object; use console.log() to inspect
     //             its contents and fields
