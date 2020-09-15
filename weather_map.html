@@ -11,19 +11,7 @@
 <div id="container" class="container-fluid">
     <div class="bg-primary text-white p-1 mb-5"><h3 class="display-4">Open Weathermapbox</h3></div>
     <div id="card-stack" class="row">
-        <div class="col-2">
-            <div class="card">
-                <div class="card-header text-center">-date-</div>
-                <div class="card-body">
-                    <div class="text-center my-2"><strong>-temp/temp-</strong></div>
-                    <div class="text-center my-2">-icon-</div>
-                    <p>Description: <strong>-weather type i.e overcast-</strong></p>
-                    <p>Humidity: <strong>-humidity-</strong></p>
-                    <p>Wind: <strong>-wind-</strong></p>
-                    <p>Pressure: <strong>-pressure-</strong></p>
-                </div>
-            </div>
-        </div>
+
     </div>
 </div>
 
@@ -36,17 +24,38 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script>
     (function() {
-        $(document).ready(function() {
+
+        function mapUpdate() {
+            $('#card-stack').empty();
             $.ajax({
                 url: "http://api.openweathermap.org/data/2.5/weather",
                 type: "GET",
                 data: {
                     APPID: OWM_key,
                     q: "Dallas, TX, US",
+                    units: "imperial"
                 }
             }).done(function(data) {
                 console.log(data);
+                $('#card-stack').append("<div class=\"col-2\">\n" +
+                    "            <div class=\"card\">\n" +
+                    "                <div class=\"card-header text-center\">" + "-date-" + "</div>\n" +
+                    "                <div class=\"card-body\">\n" +
+                    "                    <div class=\"text-center my-2\"><strong>" + data.main.temp + "&deg;F</strong></div>\n" +
+                    "                    <div class=\"text-center my-2\">-icon-</div>\n" +
+                    "                    <p>Description: <strong>" + data.weather[0].description + "</strong></p>\n" +
+                    "                    <p>Humidity: <strong>-humidity-</strong></p>\n" +
+                    "                    <p>Wind: <strong>" + data.wind.speed + "</strong></p>\n" +
+                    "                    <p>Pressure: <strong>" + data.main.pressure + "</strong></p>\n" +
+                    "                </div>\n" +
+                    "            </div>\n" +
+                    "        </div>"
+                );
             });
+        }
+
+        $(document).ready(function() {
+            mapUpdate();
         });
     })();
 </script>
