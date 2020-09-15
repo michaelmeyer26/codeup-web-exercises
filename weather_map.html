@@ -10,7 +10,7 @@
 <body>
 <div id="container" class="container-fluid">
     <div class="bg-primary text-white p-1 mb-5"><h3 class="display-4">Open Weathermapbox</h3></div>
-    <div id="card-stack" class="row">
+    <div id="card-stack" class="row d-flex justify-content-around">
 
     </div>
 </div>
@@ -25,37 +25,34 @@
 <script>
     (function() {
 
-        function mapUpdate() {
+        function mapUpdate(lat, lon) {
             $('#card-stack').empty();
-            $.ajax({
-                url: "http://api.openweathermap.org/data/2.5/weather",
-                type: "GET",
-                data: {
-                    APPID: OWM_key,
-                    q: "Dallas, TX, US",
-                    units: "imperial"
+            $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=current,minutely,hourly&appid=" + OWM_key, {
+                units: 'imperial'
+            }).done(function (data) {
+                console.log(data)
+                for (var i = 0; i <= 4; i++) {
+                    $('#card-stack').append("<div class=\"col-2\">\n" +
+                        "            <div class=\"card\">\n" +
+                        "                <div class=\"card-header text-center\">" + "-date-" + "</div>\n" +
+                        "                <div class=\"card-body\">\n" +
+                        "                    <div class=\"text-center my-2\"><strong>" + data.daily[i].temp.day + "/" + data.daily[i].temp.night + "&deg;F</strong></div>\n" +
+                        "                    <div class=\"text-center my-2\"><img src=\"http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png\"></div>\n" +
+                        "                    <p>Description: <strong>" + data.daily[i].weather[0].description + "</strong></p>\n" +
+                        "                    <p>Humidity: <strong>" + data.daily[i].humidity + "</strong></p>\n" +
+                        "                    <p>Wind: <strong>" + data.daily[i].wind_speed + "</strong></p>\n" +
+                        "                    <p>Pressure: <strong>" + data.daily[i].pressure + "</strong></p>\n" +
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "        </div>"
+                    );
                 }
-            }).done(function(data) {
-                console.log(data);
-                $('#card-stack').append("<div class=\"col-2\">\n" +
-                    "            <div class=\"card\">\n" +
-                    "                <div class=\"card-header text-center\">" + "-date-" + "</div>\n" +
-                    "                <div class=\"card-body\">\n" +
-                    "                    <div class=\"text-center my-2\"><strong>" + data.main.temp + "&deg;F</strong></div>\n" +
-                    "                    <div class=\"text-center my-2\">-icon-</div>\n" +
-                    "                    <p>Description: <strong>" + data.weather[0].description + "</strong></p>\n" +
-                    "                    <p>Humidity: <strong>-humidity-</strong></p>\n" +
-                    "                    <p>Wind: <strong>" + data.wind.speed + "</strong></p>\n" +
-                    "                    <p>Pressure: <strong>" + data.main.pressure + "</strong></p>\n" +
-                    "                </div>\n" +
-                    "            </div>\n" +
-                    "        </div>"
-                );
+                ;
             });
-        }
+        };
 
         $(document).ready(function() {
-            mapUpdate();
+            mapUpdate(32.7767, -96.7970);
         });
     })();
 </script>
