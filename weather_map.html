@@ -101,7 +101,8 @@
                 console.log(location);
                 geocode(location, mapboxToken).then(function(result) {
                     map.setCenter(result);
-                    weatherUpdate(result[1], result[0])
+                    weatherUpdate(result[1], result[0]);
+                    marker.setLngLat(result).addTo(map);
                 });
             })
 
