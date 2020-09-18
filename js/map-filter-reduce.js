@@ -46,4 +46,6 @@ let partyEXP = users.reduce(
     (totalYearsEXP, user) => {return totalYearsEXP + user.yearsOfExperience}
     , 0);
 console.log(partyEXP);
+let averageEXP = partyEXP / users.length
+console.log(averageEXP);
 
