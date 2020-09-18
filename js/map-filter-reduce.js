@@ -46,6 +46,18 @@ let partyEXP = users.reduce(
     (totalYearsEXP, user) => {return totalYearsEXP + user.yearsOfExperience}
     , 0);
 console.log(partyEXP);
+
 let averageEXP = partyEXP / users.length
 console.log(averageEXP);
+
+let longestEmail = users.reduce(
+    (longestEmail, user) => {
+        if(user.email.length > longestEmail.length) {
+            return user.email;
+        } else {
+            return longestEmail;
+        }
+    }
+    , "");
+console.log(longestEmail);
 
