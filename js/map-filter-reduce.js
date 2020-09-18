@@ -61,3 +61,29 @@ let longestEmail = users.reduce(
     , "");
 console.log(longestEmail);
 
+let instructors = users.reduce(
+    (instructors, user, index) => {
+        if (index === 0) {
+            return instructors += user.name;
+        } else if (index === (users.length - 1)) {
+            return instructors += ", and " + user.name + ".";
+        } else {
+            return instructors += ", " + user.name;
+        }
+    }
+    , "Your instructors are: ");
+console.log(instructors);
+
+let languages = users.reduce(
+    (languages, user) => {
+        for(let i = 0; i < user.languages.length; i++) {
+            if (!languages.includes(user.languages[i])) {
+                languages.push(user.languages[i])
+            }
+        }
+        return languages;
+    }, []);
+console.log(languages);
+
+
+
