@@ -37,3 +37,7 @@ const users = [
 ];
 
 let threeOrMoreLanguages = users.filter(user => {return user.languages.length >= 3});
+console.log(threeOrMoreLanguages);
+
+let emails = users.map(user => user.email);
+console.log(emails);
