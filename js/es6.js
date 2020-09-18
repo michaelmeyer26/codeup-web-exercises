@@ -58,8 +58,8 @@ let names = [];
 // });
 
 users.forEach( user => {
-  emails.push(user.email)
-  names.push(user.name)
+  emails.push(user.email);
+  names.push(user.name);
 } );
 
 // TODO: replace `var` with `let` in the following declaration
