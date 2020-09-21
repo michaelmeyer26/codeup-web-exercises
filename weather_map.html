@@ -6,23 +6,29 @@
     <title>Weather Map</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Condensed&display=swap" rel="stylesheet">
     <style>
         #map {
             width: 100%;
-            height: 500px;
+            height: 550px;
         }
         #card-stack {
             height: 350px;
+            font-size: 1em;
+        }
+        h3 {
+            font-family: 'Montserrat', sans-serif;
         }
     </style>
 </head>
 <body>
+
+<div class="bg-primary text-white p-1 mb-3 d-flex justify-content-between"><h3 class="display-4">Open Weathermapbox</h3><h5 class="my-auto mr-3">Current city: <span id="current-city">Dallas, TX</span></h5></div>
+
 <div id="container" class="container-fluid">
 
-    <div class="bg-primary text-white p-1 mb-3"><h3 class="display-4">Open Weathermapbox</h3></div>
-
     <div class="form-group ml-5">
-        Place <input id="search-text" type="text" class="mx-3" value="Dallas, TX"> <button id="search-button" class="btn btn-primary">Find Weather</button>
+        <input id="search-text" type="text" class="mr-3" value="Dallas, TX"> <button id="search-button" class="btn btn-primary">Find Weather</button>
     </div>
 
     <div id="card-stack" class="row d-flex justify-content-around my-3"></div>
@@ -61,7 +67,7 @@
                         "            <div class=\"card\">\n" +
                         "                <div class=\"card-header text-center\">" + date + "</div>\n" +
                         "                <div class=\"card-body\">\n" +
-                        "                    <div class=\"text-center my-2\"><strong>" + data.daily[i].temp.day + "/" + data.daily[i].temp.night + "&deg;F</strong></div>\n" +
+                        "                    <div class=\"text-center my-2\"><strong>" + data.daily[i].temp.min + " / " + data.daily[i].temp.max + "&deg;F</strong></div>\n" +
                         "                    <div class=\"text-center my-2\"><img src=\"http://openweathermap.org/img/w/" + data.daily[i].weather[0].icon + ".png\"></div>\n" +
                         "                    <p>Description: <strong>" + data.daily[i].weather[0].description + "</strong></p>\n" +
                         "                    <p>Humidity: <strong>" + data.daily[i].humidity + "</strong></p>\n" +
@@ -71,8 +77,7 @@
                         "            </div>\n" +
                         "        </div>"
                     );
-                }
-                ;
+                };
             });
         };
 
@@ -101,10 +106,12 @@
 
             $('#search-button').click(function() {
                 var location = $('#search-text').val();
+                $('#current-city').text(location);
                 geocode(location, mapboxToken).then(function(result) {
                     map.setCenter(result);
                     weatherUpdate(result[1], result[0]);
                     marker.setLngLat(result).addTo(map);
+                    map.setZoom(10)
                 });
             });
         });
